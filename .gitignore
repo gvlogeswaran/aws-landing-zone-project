@@ -1,0 +1,6 @@
+# Ignore AWS credentials
+.aws/
+# Ignore IDE files
+.vscode/
+# Ignore temporary files
+*.log
