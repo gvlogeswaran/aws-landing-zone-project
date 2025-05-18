@@ -5,4 +5,4 @@
 # Ignore temporary files
 *.log
 # Ignore Terraform secret access data
-*.tfvars
+terraform.tfvars

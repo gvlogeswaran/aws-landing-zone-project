@@ -6,11 +6,7 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 5.0"
     }
-    random = {
-      source  = "hashicorp/random"
-      version = "~> 3.0"
-    }
-   }
+  }
 }
 
 provider "aws" {
@@ -19,12 +15,12 @@ provider "aws" {
   region     = var.region
 }
 
-resource "random_string" "bucket_suffix" {
-     length  = 8
-     special = false
-     upper   = false
-   }
 
-resource "aws_s3_bucket" "test_bucket" {
-  bucket = "lcu--bucket-aiagent-controltowe"
+# This Terraform configuration creates an S3 bucket with a random suffix
+resource "aws_s3_bucket" "sample_bucket" {
+  bucket = "lcu-bucket-aiagent-landingzone"
+  tags = {
+    Name        = "SampleBucket"
+    Environment = "Test"
+  }
 }
