@@ -9,13 +9,6 @@ BEDROCK_TIMEOUT = int(os.environ.get("BEDROCK_TIMEOUT", 15))
 def mock_bedrock_response(prompt):
     return f"Mock Terraform code for prompt (Messages API, Anthropic Version, Timeout): {prompt}"
 
-# Simple validation for Terraform syntax (mock for now)
-def validate_terraform(code):
-    # Check for basic Terraform structure
-    if "provider \"aws\"" not in code or "resource" not in code:
-        return False, "Invalid Terraform code: Missing provider or resource block"
-    return True, "Validation passed"
-
 # Initialize Bedrock client (will work if access is approved)
 bedrock = boto3.client('bedrock-runtime', region_name='us-east-1', config=boto3.session.Config(read_timeout=BEDROCK_TIMEOUT, connect_timeout=BEDROCK_TIMEOUT))
 
@@ -46,14 +39,6 @@ def lambda_handler(event, context):
     except Exception as e:
         print(f"Bedrock access error: {e} - Using mock response with Messages API, anthropic_version, and timeout considered")
         terraform_code = mock_bedrock_response(prompt)
-
-    # Validate the generated Terraform code
-    is_valid, validation_message = validate_terraform(terraform_code)
-    if not is_valid:
-        return {
-            'statusCode': 400,
-            'body': validation_message
-        }
 
     return {
         'statusCode': 200,
