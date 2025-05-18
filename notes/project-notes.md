@@ -24,3 +24,5 @@ Development of an AI Agent for Automated AWS Landing Zone Deployment Using AWS C
   - How can I improve prompt engineering for better Terraform code generation?
   - Is my current Lambda validation approach sufficient, or should I add more now?
   - Are there any best practices for managing Terraform state in CodeBuild deployments?
+
+  - Fixed: Updated buildspec.yml to include terraform init, plan, and apply.
