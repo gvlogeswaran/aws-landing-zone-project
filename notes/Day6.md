@@ -23,3 +23,14 @@ Updated project-notes.md with progress review, CodeBuild test results, prompt en
 - Status: [Tested with Bedrock/Pending]
 - Expected Output (if pending): Terraform code for an S3 bucket with random suffix and tags
 - Actual Output (if tested): [Paste the generated code here]
+
+## AWS Organizations Basics
+- Organizations: Service to manage multiple AWS accounts.
+- Key Features: OUs, SCPs, integrates with Control Tower.
+- Use Case: Structure Management, Log Archive, Audit, Sandbox OU.
+- Example: Use SCP to enforce MFA across accounts.
+
+
+## AWS Console Observations
+- Organizations Status: [Not set up]
+- Next Step: Set up via Terraform in upcoming days.
